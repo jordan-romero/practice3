@@ -16,6 +16,10 @@ function App() {
       : setCount((prevCount) => prevCount - 1)
   }
 
+  const deleteTaskHandler = (taskId) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId))
+  }
+
   return (
     <div className="layout">
       <div className="frame">
@@ -29,8 +33,10 @@ function App() {
             <TaskCard
               key={idx}
               name={entry.name}
+              id={entry.id}
               isFirstCard={idx === 0}
               updateCountHandler={updateCountHandler}
+              deleteTaskHandler={deleteTaskHandler}
             ></TaskCard>
           ))}
           <AddTaskInput />
